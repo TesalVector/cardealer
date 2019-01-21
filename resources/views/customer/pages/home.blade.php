@@ -1,0 +1,71 @@
+@extends('customer.layouts.base')
+
+@section('body')
+      <header>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner" role="listbox">
+            <!-- Slide One - Set the background image for this slide in the line below -->
+            <div class="carousel-item active" style="background-image: url({{ Storage::disk(env( 'DISK', 'local'))->url('/slide/screen1.jpg') }})">
+              <div class="carousel-caption d-none d-md-block">
+                <h3>First Slide</h3>
+                <p>This is a description for the first slide.</p>
+              </div>
+            </div>
+            <!-- Slide Two - Set the background image for this slide in the line below -->
+            <div class="carousel-item" style="background-image: url({{ Storage::disk(env( 'DISK', 'local'))->url('/slide/screen2.jpg') }})">
+              <div class="carousel-caption d-none d-md-block">
+                <h3>Second Slide</h3>
+                <p>This is a description for the second slide.</p>
+              </div>
+            </div>
+            <!-- Slide Three - Set the background image for this slide in the line below -->
+            <div class="carousel-item" style="background-image: url({{ Storage::disk(env( 'DISK', 'local'))->url('/slide/screen3.jpg') }})">
+              <div class="carousel-caption d-none d-md-block">
+                <h3>Third Slide</h3>
+                <p>This is a description for the third slide.</p>
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </header>
+
+    <section class="py-5">
+        <div class="container">
+            <h1 class="text-center">Chack our cars</h1>
+            <p class="mt-5 mb-5">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
+            <div class='row cards'>
+                <div class="col-md-3 col-12 pt-3 pl-4 pr-4 pb-3 bg-light" style="width: 18rem;">
+                    <i class="fas fa-car"></i>
+                    <h3 class="font-weight-bold">BMW</h3>
+                    <p>We sell perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</p>
+                    <a href='{{url('models')}}' class="btn btn-warning">See all car</a>
+                </div>
+                <div class="col-md-3 col-12 ml-1 pt-3 pl-4 pr-4 pb-3 bg-light" style="width: 18rem;">
+                    <i class="fas fa-car"></i>
+                    <h3 class="font-weight-bold">Opel</h3>
+                    <p>We sell perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</p>
+                    <a href='' class="btn btn-warning">See all car</a>
+                </div>
+                <div class="col-md-3 col-12 ml-1 pt-3 pl-4 pr-4 pb-3 bg-light" style="width: 18rem;">
+                    <i class="fas fa-car"></i>
+                    <h3 class="font-weight-bold">Mercedes</h3>
+                    <p>We sell perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</p>
+                    <a href='' class="btn btn-warning">See all car</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    @stop
