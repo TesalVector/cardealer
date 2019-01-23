@@ -8,7 +8,7 @@
             <div class='container'>
                 <div class="row justify-content-center">
                     <div class="col-md-6">
-                        <form action='{{ url('/editBrand') }}' method="POST">
+                        <form action='{{ url('/editTire') }}' method="POST">
                             {{ csrf_field() }}
                             @if(count($errors) > 0)
                                 <div class="alert alert-danger">
@@ -20,22 +20,29 @@
                                 </div>
                             @endif
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Name brand</label>
-                                <input name='brand' type="text" value='{{ $brand->name }}' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name brand">
-                                <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                <label for="exampleInputEmail1">Name tire</label>
+                                <input name='tire' type="text" value='{{ $tire->name }}' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name brand">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Land of origin</label>
-                                <select name='country' class="form-control">
-                                    @foreach ($countries as $country)
-                                        <option value="{{$country->id}}"
-                                            @if($country->id == $brand->country_id)
+                                <label for="exampleInputPassword1">Type</label>
+                                <select name='type' class="form-control">
+                                    @foreach ($enums as $enum)
+                                        <option value="{{$enum}}"
+                                            @if($enum == $tire->id)
                                                 selected='selected'
                                             @endif
-                                        >{{$country->name}}</option>   
+                                        >{{$enum}}</option>   
                                     @endforeach
                                 </select>
-                                <input type="hidden" name='id' value='{{$brand->id}}'>
+                                <input type="hidden" name='id' value='{{$tire->id}}'>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Size</label>
+                                <input name='size' type="text" value='{{ $tire->size }}' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name brand">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Proce</label>
+                                <input name='price' type="text" value='{{ $tire->price }}' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name brand">
                             </div>
                             <button type="submit" class="btn btn-primary">Edit</button>
                         </form>

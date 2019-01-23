@@ -8,7 +8,7 @@
             <div class='container'>
                 <div class="row justify-content-center">
                     <div class="col-md-6">
-                        <form action='{{ url('/editBrand') }}' method="POST">
+                        <form action='{{ url('/editLawsGlass') }}' method="POST">
                             {{ csrf_field() }}
                             @if(count($errors) > 0)
                                 <div class="alert alert-danger">
@@ -20,23 +20,38 @@
                                 </div>
                             @endif
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Name brand</label>
-                                <input name='brand' type="text" value='{{ $brand->name }}' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name brand">
+                                <label for="exampleInputEmail1">Front glass</label>
+                                <input type="text" class="form-control" name='front' value='{{ $lawsGlass->front }}' id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Front glass">
                                 <small class="form-text text-muted">We'll never share your email with anyone else.</small>
                             </div>
                             <div class="form-group">
+                                <label for="exampleInputEmail1">Back glass</label>
+                                <input type="text" class="form-control" name='back' value='{{ $lawsGlass->back }}' id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Back glass">
+                                
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Right glass</label>
+                                <input type="text" class="form-control" name='right' value='{{ $lawsGlass->right }}' id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Right glass">
+                                
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Left glass</label>
+                                <input type="text" class="form-control" name='left' value='{{ $lawsGlass->left }}' id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Left glass">
+                                
+                            </div>
+                            <div class="form-group">
                                 <label for="exampleInputPassword1">Land of origin</label>
-                                <select name='country' class="form-control">
+                                <select name='country_id' class="form-control">
                                     @foreach ($countries as $country)
                                         <option value="{{$country->id}}"
-                                            @if($country->id == $brand->country_id)
+                                            @if($country->id == $lawsGlass->country_id)
                                                 selected='selected'
                                             @endif
-                                        >{{$country->name}}</option>   
+                                        >{{$country->name}}</option>  
                                     @endforeach
                                 </select>
-                                <input type="hidden" name='id' value='{{$brand->id}}'>
                             </div>
+                            <input type="hidden" name='id' value='{{$lawsGlass->id}}'>
                             <button type="submit" class="btn btn-primary">Edit</button>
                         </form>
                     </div>

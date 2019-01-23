@@ -3,8 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Mohsentm\EnumValue;
 
-class Country extends Model
+class Tire extends Model
 {
-
+    use EnumValue;
 }

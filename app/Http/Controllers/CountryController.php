@@ -8,6 +8,7 @@ use \App\Country;
 class CountryController extends Controller
 {
     public function viewAdd(){
+
         return view('admin.pages.add.addCountry');
     }
 
@@ -19,10 +20,11 @@ class CountryController extends Controller
 
     public function create(Request $request){
 
-        $this->validate($request,[
-            'country' => 'required',
-            'city' => 'required'
+        $validation = $this->validate($request,[
+            'country' => 'required|alpha',
+            'city' => 'required|alpha'
         ]);
+
 
         $country = new Country();
         $country->name = $request->get('country');
@@ -34,9 +36,9 @@ class CountryController extends Controller
 
     public function edit(Request $request){
 
-        $this->validate($request,[
-            'country' => 'required',
-            'city' => 'required'
+        $validation = $this->validate($request,[
+            'country' => 'required|alpha',
+            'city' => 'required|alpha'
         ]);
 
         $country = Country::find($request->get('id'));

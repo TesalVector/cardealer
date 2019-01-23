@@ -3,8 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use \App\Country;
 
-class Country extends Model
+class Brand extends Model
 {
 
 }

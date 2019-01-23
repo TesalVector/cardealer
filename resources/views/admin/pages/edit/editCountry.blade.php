@@ -10,6 +10,15 @@
                     <div class="col-md-6">
                         <form action='{{ url('/editCountry') }}' method="POST">
                             {{ csrf_field() }}
+                            @if(count($errors) > 0)
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Name brand</label>
                                 <input type="text" class="form-control" name='country' id="exampleInputEmail1" value="{{$country->name}}" aria-describedby="emailHelp" placeholder="Name brand">

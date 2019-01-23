@@ -8,7 +8,7 @@
             <div class='container'>
                 <div class="row justify-content-center">
                     <div class="col-md-6">
-                        <form action='{{ url('/addPackage') }}' method="POST">
+                        <form action='{{ url('/addTire') }}' method="POST">
                             {{ csrf_field() }}
                             @if(count($errors) > 0)
                                 <div class="alert alert-danger">
@@ -20,9 +20,22 @@
                                 </div>
                             @endif
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Name Item</label>
-                                <input type="text" class="form-control" name='item' id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name brand">
+                                <label for="exampleInputEmail1">Name tire</label>
+                                <input type="text" class="form-control" name='tire' id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name brand">
                                 <br/>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Type</label>
+                                <select name='type' class="form-control">
+                                    @foreach ($enums as $enum)
+                                        <option value="{{$enum}}">{{$enum}}</option>   
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group"> 
+                                <label for="exampleInputEmail1">Size</label>
+                                <input type="text" class="form-control" name='size' id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name brand">
+                            </div>
+                            <div class="form-group">
                                 <label for="exampleInputEmail1">Price</label>
                                 <input type="text" class="form-control" name='price' id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name brand">
                             </div>
