@@ -132,11 +132,10 @@ class ModelController extends Controller
             'city' => 'required|alpha'
         ]);
         $country = Country::find($request->get('id'));
-        $country->name = $request->get('country');
-        $country->capital_city = $request->get('city');
-        $country->save();
-        return redirect('dashboard');
+        
     }
+
+
     public function delete($id){
         $car = Car::find($id);
         CarPackage::where('car_id','=',$id)->delete();

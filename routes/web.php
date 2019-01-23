@@ -128,6 +128,8 @@ Route::post('/editTire', 'TireController@edit');
 Route::get('/deleteTire/{id}', 'TireController@delete');
 /* end */
 
+
+
 /* Route for Models */
 
 Route::get('/addModel', 'ModelController@viewAdd');
@@ -137,6 +139,19 @@ Route::get('/editModel/{id}', 'ModelController@viewEdit');
 Route::post('/editModel', 'ModelController@edit');
 
 Route::get('/deleteModel/{id}', 'ModelController@delete');
+/* end */
+
+
+
+/* Route for Slider Image */
+
+Route::get('/addSliderImage', 'SliderImageController@viewAdd');
+Route::post('/addSliderImage', 'SliderImageController@create');
+
+Route::get('/editSliderImage/{id}', 'SliderImageController@viewEdit');
+Route::post('/editSliderImage', 'SliderImageController@edit');
+
+Route::get('/deleteSliderImage/{id}', 'SliderImageController@delete');
 /* end */
 
 

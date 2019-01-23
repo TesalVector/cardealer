@@ -168,6 +168,28 @@
                 </tbody>
             </table>
             <a href='{{ url('/addTire') }}' class="btn btn-success">Add</a>
+            <h2 class="text-center dashboard-subtitle">Slider</h2>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Handle</th>
+                    </tr>
+                </thead>
+                <tbody class="thead-light">
+                        @foreach($sliderImages as $i => $sliderImage)
+                        <tr>
+                            <th scope="row">{{$i+1}}</th>
+                            <td>{{$sliderImage->name}}</td>
+                            <td>{{$sliderImage->description}}</td>
+                            <td><a href='/editSliderImage/{{$sliderImage->id}}' class="btn btn-primary">Edit</a> <a href='/deleteSliderImage/{{$sliderImage->id}}' class="btn btn-danger">Delete</a></td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            <a href='{{ url('/addSliderImage') }}' class="btn btn-success">Add</a>
         </div>
     </div>
     <!-- /#page-content-wrapper -->

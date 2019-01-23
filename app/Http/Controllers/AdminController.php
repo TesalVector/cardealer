@@ -12,6 +12,7 @@ use \App\Engine;
 use \App\Package;
 use \App\Tire;
 use \App\Car;
+use \App\SliderImage;
 
 class AdminController extends Controller
 {
@@ -51,6 +52,7 @@ class AdminController extends Controller
         $packages = Package::all();
         $tires = Tire::all();
         $cars = Car::all();
+        $sliderImages = SliderImage::all();
         return view('admin.pages.dashboard')
             ->with('countries', $countries)
             ->with('brands', $brands)
@@ -58,6 +60,7 @@ class AdminController extends Controller
             ->with('engines', $engines)
             ->with('packages', $packages)
             ->with('tires', $tires)
-            ->with('cars', $cars);
+            ->with('cars', $cars)
+            ->with('sliderImages', $sliderImages);
     }
 }
