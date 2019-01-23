@@ -187,3 +187,10 @@ $(document).ready(function() {
 });
 
 console.log('hello');
+
+$(document).ready(function(){
+    $(".font-weight-bold").on('click', function(){
+        console.log('Hello World');
+        alert('Hello');
+    })
+})

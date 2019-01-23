@@ -47,24 +47,14 @@
             <h1 class="text-center">Chack our cars</h1>
             <p class="mt-5 mb-5">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
             <div class='row cards'>
-                <div class="col-md-3 col-12 pt-3 pl-4 pr-4 pb-3 bg-light" style="width: 18rem;">
-                    <i class="fas fa-car"></i>
-                    <h3 class="font-weight-bold">BMW</h3>
-                    <p>We sell perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</p>
-                    <a href='{{url('models')}}' class="btn btn-warning">See all car</a>
-                </div>
-                <div class="col-md-3 col-12 ml-1 pt-3 pl-4 pr-4 pb-3 bg-light" style="width: 18rem;">
-                    <i class="fas fa-car"></i>
-                    <h3 class="font-weight-bold">Opel</h3>
-                    <p>We sell perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</p>
-                    <a href='' class="btn btn-warning">See all car</a>
-                </div>
-                <div class="col-md-3 col-12 ml-1 pt-3 pl-4 pr-4 pb-3 bg-light" style="width: 18rem;">
-                    <i class="fas fa-car"></i>
-                    <h3 class="font-weight-bold">Mercedes</h3>
-                    <p>We sell perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</p>
-                    <a href='' class="btn btn-warning">See all car</a>
-                </div>
+                @foreach($brands as $brand)
+                  <div class="col-md-3 col-12 pt-3 pl-4 pr-4 pb-3 bg-light" style="width: 18rem;">
+                      <i class="fas fa-car"></i>
+                      <h3 class="font-weight-bold">{{$brand->name}}</h3>
+                      <p>We sell perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</p>
+                      <a href='models/{{$brand->id}}' class="btn btn-warning">See all car</a>
+                  </div>
+                @endforeach
             </div>
         </div>
     </section>

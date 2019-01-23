@@ -9,7 +9,11 @@ class Car extends Model
 {
     use EnumValue;
 
-    public function package(){
+    public function basicPackage(){
         return $this->belongsToMany(Package::class);
+    }
+
+    public function extraPackage(){
+        return $this->belongsToMany(Package::class,"car_extra_package");
     }
 }

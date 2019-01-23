@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -12,6 +10,7 @@ use \App\Image;
 use \App\Package;
 use \App\Brand;
 use \App\CarPackage;
+use \App\CarExtraPackage;
 
 class ModelController extends Controller
 {
@@ -20,41 +19,44 @@ class ModelController extends Controller
         $packages = Package::all();
         $engines = Engine::all();
         $conditions = Car::getEnumValues();
-
         \Log::info($conditions);
         return view('admin.pages.add.addModel')
         ->with('brands',$brands)
         ->with('conditions',$conditions['condition'])
         ->with('packages',$packages)
         ->with('engines',$engines);
-
     }
-
     public function viewEdit($id){
         $country = Country::find($id);
-
         return view('admin.pages.edit.editModel')->with('country',$country);
     }
-
     public function create(Request $request){
-        
+        $boxBasic = array();
+        $boxExtra = array();
+        $id = array();
         $packageLength = Package::All()->count();
-        
-
         $i = 1;
-        $box = array();
-        while ($i <= $packageLength) {
-            if(Package::Find($request->get("item{$i}")) != null){
-                array_push($box, $request->get("item{$i}"));  
-            }
 
+        while ($i <= $packageLength) {
+            if($request->get("item{$i}") == []){
+                return 'Hello';
+            }
+            
+            $x = explode('_',$request->get("item{$i}"));
+            $r = $x[1];
+
+            if($r != null){
+                
+                if($x[0] === 'basic'){
+                    array_push($boxBasic, $r);
+                }else if($x[0] === 'extra'){
+                    array_push($boxExtra, $r);
+                }
+            }
             $i++;
         }
-        //\Log::info($box);
-        //return
-        
+   
         $validation = $this->validate($request,[
-
             'brand' => 'required',
             'model' => 'required',
             'model_img' => 'required',
@@ -77,27 +79,19 @@ class ModelController extends Controller
         $car = new Car();
         $image = new Image();
         
-
         //$request->image->getClientOriginalName()
-
-
         $j = 1;
-
         //\Log::info($request->model_img->getClientOriginalName());
-
         $image->model = 'model-'.$request->get('model').'.png';
         $image->slide1 = 'slide1-'.$request->get('model').'.png';
         $image->slide2 = 'slide2-'.$request->get('model').'.png';
         $image->slide3 = 'slide3-'.$request->get('model').'.png';
         $image->slide4 = 'slide4-'.$request->get('model').'.png';
-
         /*for ($j=1; $j <= 4; $j++) { 
             $image->slide1 = "slide{$j}-".$request->get('model').'jpg';
             \Log::info('Hello World');
         }*/
-
         $image->save();
-
         $car->brand_id = $request->get('brand');
         $car->model = $request->get('model');
         $car->price = $request->get('price');
@@ -113,47 +107,41 @@ class ModelController extends Controller
         $car->description = $request->get('description');
         $car->image_id = $image->id;
         $car->save();
-
         $model_img = $request->file('model_img');
         $model_img_filename = $image->model;
         if($model_img){
             Storage::disk('local')->put($model_img_filename, File::get($model_img));
         }
-
         for($i=1; $i <= 4; $i++){
             $slide = $request->file("slide".$i);
             \Log::info($slide);
             $slide_filename = $image["slide{$i}"];
-
             if($slide){
                 Storage::disk('local')->put($slide_filename, File::get($slide));
                 \Log::info('Hello from image!');
             }
         }
-
-
-        $car->package()->sync($box);
+        $car->basicPackage()->sync($boxBasic);
+        $car->extraPackage()->sync($boxExtra);
+        
         return redirect('dashboard');
     }
-
     public function edit(Request $request){
-
         $validation = $this->validate($request,[
             'country' => 'required|alpha',
             'city' => 'required|alpha'
         ]);
-
         $country = Country::find($request->get('id'));
         $country->name = $request->get('country');
         $country->capital_city = $request->get('city');
         $country->save();
-
         return redirect('dashboard');
     }
-
     public function delete($id){
         $car = Car::find($id);
-        $car_package = CarPackage::where('car_id','=',$id)->delete();
+        CarPackage::where('car_id','=',$id)->delete();
+        CarExtraPackage::where('car_id','=',$id)->delete();
+        Image::where('id','=',$id)->delete();
         $car->delete();
         return redirect('dashboard');
     }

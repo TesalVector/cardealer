@@ -91,7 +91,15 @@
                                 <p>Make basic package</p>
                                 @foreach ($packages as $i => $package)
                                     <label for="exampleInputPassword1">{{ $package->name }}</label>
-                                    <input type="checkbox" name='item{{$i+1}}' value="{{ $package->id }}">
+                                    <input type="checkbox" class="item_{{$i+1}}" value="{{ $package->id }}" data-package='basic'>
+                                @endforeach
+                                <p>Make extra package</p>
+                                @foreach ($packages as $i => $package)
+                                    <label for="exampleInputPassword1">{{ $package->name }}</label>
+                                    <input type="checkbox" class="item_{{$i+1}}" value="{{ $package->id }}" data-package='extra'>
+                                @endforeach
+                                @foreach ($packages as $i => $package)
+                                    <input type="hidden" id='package_{{$i+1}}' name='item{{$i+1}}' value="">
                                 @endforeach
                             </div>
                             <div class="form-group">
@@ -105,5 +113,44 @@
             </div>
         </div>
     </div>
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+  crossorigin="anonymous"></script>
+  <script>
+
+
+        $("form input:checkbox").on('click', function(){
+            var str = $(this).attr('class');
+            var x = str.split('_').pop();
+        
+            var package = $(this).attr('data-package');
+        
+        
+        
+            $(".item_"+x).change(function() {
+            var checked = $(this).is(':checked');
+            var hiddenVal;
+            hiddenVal = $(".item_"+x).val();
+            if(package === 'basic'){
+                $("#package_"+x).val('basic_'+hiddenVal);
+                //console.log('set basic');
+            }else if(package === 'extra'){
+                $("#package_"+x).val('extra_'+hiddenVal);
+                //console.log('set extra');
+            }
+        
+            console.log($("#package_1").val());
+        
+            $(".item_"+x).prop('checked',false);
+            if(checked) {
+                $(this).prop('checked',true);
+            }
+        });
+        
+        });
+        
+    </script>
+        
     <!-- /#page-content-wrapper -->
 @stop

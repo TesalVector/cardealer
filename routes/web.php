@@ -15,11 +15,9 @@
 /* CUSTOMER */
 //////////////
 
-Route::get('/', function(){
-    return view('customer/pages/home');
-});
+Route::get('/', 'HomeController@index');
 
-Route::get('/models', function(){
+Route::get('/models/{id}', function(){
     return view('customer/pages/models');
 });
 
