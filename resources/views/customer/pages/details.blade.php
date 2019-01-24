@@ -18,20 +18,10 @@
     <!-- Slider --> 
     <section class='container'>
         <div class="row">
-            <div class='col-md-7'>
-                <div class="slider-for">
+            <div class='col-md-7'> 
+                <div class="w3-content w3-section sidebar-slider-show">
                     @foreach($images as $image)
-                    <div class="item">
-                        <img src="{{asset('storage/image/slide/').'/'.$image}}" alt="image"  draggable="false"/>
-                    </div>
-                    @endforeach  
-                </div>
-                    
-                <div class="slider-nav">
-                    @foreach($images as $image)
-                    <div class="item">
-                        <img src="{{asset('storage/image/slide/').'/'.$image}}" alt="image"  draggable="false"/>
-                    </div>
+                        <img class="mySlides" src="{{asset('storage/image/slide/').'/'.$image}}" style="width:100%">
                     @endforeach
                 </div>
                 <div class="tabs mb-4">
@@ -61,22 +51,13 @@
                     <div id="tab03" class="tab-contents">
                       <h2>BESIC PACKAGE</h2>
                       <div class="row">
-                      <div class="col-md-6 description-list-p">
-                        <ul class="list-group">
-                            @foreach($packages as $package)
-                                <li class="list-group-item"><i class="fas fa-check-circle"></i><span>{{$package->name}}</span></li>
-                            @endforeach
-                        </ul> 
-                      </div>
-                      <div class="col-md-6  description-list-p">
+                        <div class="col-md-12 description-list-p">
                             <ul class="list-group">
-                                <li class="list-group-item"><i class="fas fa-check-circle"></i><span>Lorem ipsum</span></li>
-                                <li class="list-group-item"><i class="fas fa-check-circle"></i><span>Lorem ipsum</span></li>
-                                <li class="list-group-item"><i class="fas fa-check-circle"></i><span>Lorem ipsum</span></li>
-                                <li class="list-group-item"><i class="fas fa-check-circle"></i><span>Lorem ipsum</span></li>
-                                <li class="list-group-item"><i class="fas fa-check-circle"></i><span>Lorem ipsum</span></li>
+                                @foreach($packages as $package)
+                                    <li class="list-group-item"><i class="fas fa-check-circle mr-4"></i><span>{{$package->name}}</span></li>
+                                @endforeach
                             </ul> 
-                          </div>
+                        </div>
                       </div>
                     </div>
                 </div>
@@ -122,11 +103,14 @@
                         <strong>{{$car->drivetrain}}</strong>
                     </li>
                 </ul>
-                <a href="http://localhost/payment/{{$car['id']}}" class="text-center btn btn-warning description-btn-buy">Buy now</a>
+                <a href="/payment/{{$car['id']}}" class="text-center btn btn-warning description-btn-buy mb-5">Buy now</a>
             </div>
             <div class="col-md-7">
                 
             </div>
         </div>
     </section>
+    <script>
+            
+            </script>
 @stop

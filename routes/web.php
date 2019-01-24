@@ -151,15 +151,11 @@ Route::get('/deleteSliderImage/{id}', 'SliderImageController@delete');
 /* end */
 
 
-Route::get('/juju', function(){
-    return view('customer.pages.juju');
-});
-
 
 /* OTHER */
 ///////////
 
 /* Error pages */
 
-//Route::get('/404', ['as'=>'404', 'uses' => 'ErrorController@notFound']);
+Route::get('/404', ['as'=>'404', 'uses' => 'ErrorController@notFound']);
 /* end */

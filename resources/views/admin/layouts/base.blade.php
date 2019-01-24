@@ -11,9 +11,7 @@
                 
             @yield('body')
                 
-        </div>
-        <!-- /#wrapper -->
-            
+        </div>   
         @include('admin.include.footer')       
     </body>
 </html>

@@ -1,26 +1,29 @@
+console.log('Hello World');
 
-/* Slider */
-$(document).ready(function(){
-    $('.slider-for').slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    fade: true,
-    asNavFor: '.slider-nav',
-        autoplay: true
-    });
-    $('.slider-nav').slick({
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    asNavFor: '.slider-for',
-    dots: false,
-    centerMode: true,
-    focusOnSelect: true
-    });
-
-    counsole.log('Hello World');
+$("#menu-toggle").click(function(e) {
+  e.preventDefault();
+  $("#wrapper").toggleClass("toggled");
 });
-/*End*/
+
+$(document).ready(function() {
+    var myIndex = 0;
+    carousel();
+    
+    function carousel() {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";  
+      }
+      myIndex++;
+      if (myIndex > x.length) {myIndex = 1}    
+      x[myIndex-1].style.display = "block";  
+      setTimeout(carousel, 4000); // Change image every 2 seconds
+    }
+
+    
+   
+});
 
 /*Payment*/
 $(function() {
@@ -108,91 +111,9 @@ $(function() {
         $form.append("<input type='hidden' name='reservation[stripe_token]' value='" + token + "'/>");
         $form.get(0).submit();
       }
-    }
-  })
-  /*End*/
-
-  /*Login*/
-  (function ($) {
-    "use strict";
-
-
-    /*==================================================================
-    [ Validate ]*/
-    var input = $('.validate-input .input100');
-
-    $('.validate-form').on('submit',function(){
-        var check = true;
-
-        for(var i=0; i<input.length; i++) {
-            if(validate(input[i]) == false){
-                showValidate(input[i]);
-                check=false;
-            }
         }
-
-        return check;
-    });
-
-
-    $('.validate-form .input100').each(function(){
-        $(this).focus(function(){
-           hideValidate(this);
-        });
-    });
-
-    function validate (input) {
-        if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
-            if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
-                return false;
-            }
-        }
-        else {
-            if($(input).val().trim() == ''){
-                return false;
-            }
-        }
-    }
-
-    function showValidate(input) {
-        var thisAlert = $(input).parent();
-
-        $(thisAlert).addClass('alert-validate');
-    }
-
-    function hideValidate(input) {
-        var thisAlert = $(input).parent();
-
-        $(thisAlert).removeClass('alert-validate');
-    }
-    
-    
-
-})(jQuery);
-  /*End*/
-
-
-
-$("#menu-toggle").click(function(e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
-});
-
-
-$(document).ready(function() {
-    var results = $.getJSON("https://restcountries.eu/rest/v2/all", function(data) {
-        console.log(result);
-        for(var i = 0; i < data.length; i++) {
-            $("#cities").append('<option value="' + data[i].name + '">' + data[i].name + '</option>');
-        }
-    });
-});
-
-console.log('hello');
-
-$(document).ready(function(){
-    $(".font-weight-bold").on('click', function(){
-        console.log('Hello World');
-        alert('Hello');
     })
-})
+  /*End*/
+
+
+

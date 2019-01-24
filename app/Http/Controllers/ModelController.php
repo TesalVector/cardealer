@@ -57,6 +57,8 @@ class ModelController extends Controller
             }
             $i++;
         }
+
+        
    
         $validation = $this->validate($request,[
             'brand' => 'required',
@@ -149,8 +151,13 @@ class ModelController extends Controller
         $car = Car::find($id);
         CarPackage::where('car_id','=',$id)->delete();
         CarExtraPackage::where('car_id','=',$id)->delete();
-        Image::where('id','=',$id)->delete();
+        
         $car->delete();
+        Image::where('id','=',$car->image_id)->delete();
+        Storage::disk('slider')->delete('model-520d.png');
+        for($i=1; $i <= 6; $i++){
+            Storage::disk('slider')->delete("slide{$i}-520d.png");
+        }
         return redirect('dashboard');
     }
 }

@@ -2,7 +2,7 @@
 <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
         <li class="sidebar-brand">
-            <a href="index.html">Car Dealer</a>
+            <a href="/">Car Dealer</a>
         </li>
         <li>
             <a href="{{ url('dashboard') }}">Dashboard</a>

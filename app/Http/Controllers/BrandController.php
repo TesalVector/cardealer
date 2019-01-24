@@ -57,7 +57,7 @@ class BrandController extends Controller
         $brand->name = $request->get('brand');
         $brand->country_id = $request->get('country');
         $brand->description = $request->get('description');
-        $brand->updata();
+        $brand->update();
 
         return redirect('dashboard');
     }

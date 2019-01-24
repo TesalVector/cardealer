@@ -38,25 +38,38 @@
                                 <input type="text" name="model" class="form-control" placeholder="Name model">
                             </div>
                             <div class="form-group">
-                                <label>Images</label>
-                                <input type="file" name="model_img" class="form-control">
-                                <input type="file" name="slide1" class="form-control">
-                                <input type="file" name="slide2" class="form-control">
-                                <input type="file" name="slide3" class="form-control">
-                                <input type="file" name="slide4" class="form-control">
-                                <input type="file" name="slide5" class="form-control">
-                                <input type="file" name="slide6" class="form-control">
-                                <form class="md-form">
-                                        <div class="file-field">
-                                          <div class="btn btn-primary btn-sm float-left">
-                                            <span>Choose file</span>
-                                            <input type="file">
-                                          </div>
-                                          <div class="file-path-wrapper">
-                                            <input class="file-path validate" type="text" placeholder="Upload your file">
-                                          </div>
-                                        </div>
-                                      </form>
+                                <label>Model image</label>
+                                <div class="custom-file">
+                                    <input type="file" name='model_img' class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Images for slide show</label>
+                                <div class="custom-file">
+                                    <input type="file" name='slide1' class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" name='slide2' class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" name='slide3' class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                </div>
+                                <div class="custom-file">
+                                        <input type="file" name='slide4' class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                    </div>
+                                    <div class="custom-file">
+                                    <input type="file" name='slide5' class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" name='slide6' class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Price</label>
@@ -114,26 +127,32 @@
                                 <label for="exampleInputEmail1">Consumption</label>
                                 <input type="text" name="consumption" class="form-control" placeholder="Consumption">
                             </div>
-                            <div class="form-group">
-                                <p>Make basic package</p>
-                                @foreach ($packages as $i => $package)
-                                    <label for="exampleInputPassword1">{{ $package->name }}</label>
-                                    <input type="checkbox" class="item_{{$i+1}}" value="{{ $package->id }}" data-package='basic'>
-                                @endforeach
-                                <p>Make extra package</p>
-                                @foreach ($packages as $i => $package)
-                                    <label for="exampleInputPassword1">{{ $package->name }}</label>
-                                    <input type="checkbox" class="item_{{$i+1}}" value="{{ $package->id }}" data-package='extra'>
-                                @endforeach
+                            <div class="row">
+                                <div class="col-md-6 description-list-p  model-add">
+                                  <span>Basic package</span>  
+                                    <ul class="list-group mt-4">
+                                        @foreach($packages as $i=>$package)
+                                            <li class="list-group-item"><input type="checkbox" class="item_{{$i+1}}" value="{{ $package->id }}" data-package='basic'><span><label for="exampleInputPassword1" class='ml-3'>{{ $package->name }}</label></span></li>
+                                        @endforeach
+                                    </ul> 
+                                </div>
+                                <div class="col-md-6  description-list-p  model-add">
+                                    <span>Extra package</span>  
+                                    <ul class="list-group mt-4">
+                                        @foreach($packages as $i=>$package)
+                                            <li class="list-group-item"><input type="checkbox" class="item_{{$i+1}}" value="{{ $package->id }}" data-package='extra'><span><label for="exampleInputPassword1" class='ml-3'>{{ $package->name }}</label></span></li>
+                                        @endforeach
+                                    </ul> 
+                                  </div>
+                            </div>
                                 @foreach ($packages as $i => $package)
                                     <input type="hidden" id='package_{{$i+1}}' name='item{{$i+1}}' value="">
                                 @endforeach
-                            </div>
-                            <div class="form-group">
+                            <div class="form-group mt-4">
                                 <label for="description">Description</label>
                                 <textarea class='form-control' name="description" cols="30" rows="10"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-success">Add</button>
+                            </div>             
+                            <button type="submit" class="btn btn-success">Add</button>                       
                         </form>
                     </div>
                 </div>
