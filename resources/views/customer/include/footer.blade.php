@@ -40,10 +40,10 @@
         </div>
     </div>
     <div class="footer-copyright">
-        <p>© 2019 Bee IT </p>
+        <p>© {{ date('Y') }} Bee IT </p>
     </div>
 </footer>
-<img src="img/car.png" alt="" id='car-scroll-top'>
+<img src="" alt="" id='car-scroll-top'>
 <!-- Optional JavaScript -->
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

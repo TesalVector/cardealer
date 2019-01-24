@@ -14,3 +14,5 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <title>CarDealer</title>
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon"/>
+
+    <link href="css/mdb.min.css" rel="stylesheet">

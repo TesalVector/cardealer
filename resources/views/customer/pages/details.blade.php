@@ -5,11 +5,11 @@
     <section class="container mt-4 mb-4">
         <div class="row description-title">
             <div class="col-md-9">
-                <h2>HYUNDAI SANTA FE</h2>
-                <p class="text-muted">Temporibus possimus quasi beatae, You will begin to realize why, consectetur adipisicing elit. aspernatur nemo maiores.</p>
+                <h2>{{$brand}} {{$car->model}}</h2>
+                <p class="text-muted">{{$car->description}}</p>
             </div>
             <div class="col-md-3 text-lg-right">
-                <strong>$ 69,995</strong>
+                <strong>$ {{$car->price}}</strong>
                 <p class="text-muted">Plus Taxes & Licensing</p>
             </div>
         </div>
@@ -22,15 +22,15 @@
                 <div class="slider-for">
                     @foreach($images as $image)
                     <div class="item">
-                        <img src="{{asset('storage/image/mainSlide/').'/'.$image->image}}" alt="image"  draggable="false"/>
+                        <img src="{{asset('storage/image/slide/').'/'.$image}}" alt="image"  draggable="false"/>
                     </div>
-                    @endforeach
+                    @endforeach  
                 </div>
                     
                 <div class="slider-nav">
                     @foreach($images as $image)
                     <div class="item">
-                        <img src="{{asset('storage/image/mainSlide/').'/'.$image->image}}" alt="image"  draggable="false"/>
+                        <img src="{{asset('storage/image/slide/').'/'.$image}}" alt="image"  draggable="false"/>
                     </div>
                     @endforeach
                 </div>
@@ -52,7 +52,7 @@
                   
                     <div id="tab01" class="tab-contents">
                       <h2>GENERAL INFORMATION</h2>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quos aliquam consequuntur, esse provident impedit minima porro! Laudantium laboriosam culpa quis fugiat ea, architecto velit ab, deserunt rem quibusdam voluptatum.</p>
+                      <p>{{$car->description}}</p>
                     </div>
                     <div id="tab02" class="tab-contents">
                       <h2>FEATURES & OPTIONS</h2>
@@ -63,14 +63,9 @@
                       <div class="row">
                       <div class="col-md-6 description-list-p">
                         <ul class="list-group">
-                            <li class="list-group-item"><i class="fas fa-check-circle"></i><span>Lorem ipsum</span></li>
-                            <li class="list-group-item"><i class="fas fa-check-circle"></i><span>Lorem ipsum</span></li>
-                            <li class="list-group-item"><i class="fas fa-check-circle"></i><span>Lorem ipsum</span></li>
-                            <li class="list-group-item"><i class="fas fa-check-circle"></i><span>Lorem ipsum</span></li>
-                            <li class="list-group-item"><i class="fas fa-check-circle"></i><span>Lorem ipsum</span></li>
-                            <li class="list-group-item"><i class="fas fa-check-circle"></i><span>Lorem ipsum</span></li>
-                            <li class="list-group-item"><i class="fas fa-check-circle"></i><span>Lorem ipsum</span></li>
-                            <li class="list-group-item"><i class="fas fa-check-circle"></i><span>Lorem ipsum</span></li>
+                            @foreach($packages as $package)
+                                <li class="list-group-item"><i class="fas fa-check-circle"></i><span>{{$package->name}}</span></li>
+                            @endforeach
                         </ul> 
                       </div>
                       <div class="col-md-6  description-list-p">
@@ -92,11 +87,11 @@
                 <ul>
                     <li>
                         <span>Marke</span>
-                        <strong>BMW</strong>
+                        <strong>{{$brand}}</strong>
                     </li>
                     <li>
                         <span>Model</span>
-                        <strong>7-series</strong>
+                        <strong>{{$car->model}}</strong>
                     </li>
                     <li>
                         <span>Registration date</span>
@@ -104,34 +99,30 @@
                     </li>
                     <li>
                         <span>Condition</span>
-                        <strong>New</strong>
+                        <strong>{{$car->condition}}</strong>
                     </li>
                     <li>
                         <span>Exterior Color</span>
-                        <strong>Silver</strong>
+                        <strong>{{$car->exterior_color}}</strong>
                     </li>
                     <li>
                         <span>Interior Color</span>
-                        <strong>Brown (Leather)</strong>
+                        <strong>{{$car->interior_color}}(Leather)</strong>
                     </li>
                     <li>
                         <span>Transmission</span>
-                        <strong>Automatic</strong>
-                    </li>
-                    <li>
-                        <span>Condition</span>
-                        <strong>New</strong>
+                        <strong>{{$car->transmission}}</strong>
                     </li>
                     <li>
                         <span>Engine</span>
-                        <strong>5.1 L</strong>
+                        <strong>{{$engine}}</strong>
                     </li>
                     <li>
                         <span>Drivetrain</span>
-                        <strong>FWD</strong>
+                        <strong>{{$car->drivetrain}}</strong>
                     </li>
                 </ul>
-                <a href='file:///home/milos1994/Desktop/cardealer-front-master/payment.html' class="text-center btn btn-warning description-btn-buy">Buy now</a>
+                <a href="http://localhost/payment/{{$car['id']}}" class="text-center btn btn-warning description-btn-buy">Buy now</a>
             </div>
             <div class="col-md-7">
                 

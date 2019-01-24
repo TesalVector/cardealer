@@ -8,6 +8,14 @@ body{
     display: inline-block;
 }
 
+.dis{
+    color: currentColor;
+    cursor: not-allowed !important;
+    opacity: 0.5;
+    text-decoration: none !important;
+    background: red !important;
+}
+
 #car-scroll-top{
     position: fixed;
     bottom: 50px;

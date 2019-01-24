@@ -19,12 +19,14 @@ class ModelController extends Controller
         $packages = Package::all();
         $engines = Engine::all();
         $conditions = Car::getEnumValues();
+        $drivetrains = Car::getEnumValues();
         \Log::info($conditions);
         return view('admin.pages.add.addModel')
         ->with('brands',$brands)
         ->with('conditions',$conditions['condition'])
         ->with('packages',$packages)
-        ->with('engines',$engines);
+        ->with('engines',$engines)
+        ->with('drivetrains',$drivetrains['drivetrain']);
     }
     public function viewEdit($id){
         $country = Country::find($id);
@@ -39,7 +41,7 @@ class ModelController extends Controller
 
         while ($i <= $packageLength) {
             if($request->get("item{$i}") == []){
-                return 'Hello';
+                return back()->with('error', 'You must make Basic and Extra package');
             }
             
             $x = explode('_',$request->get("item{$i}"));
@@ -65,6 +67,7 @@ class ModelController extends Controller
             'slide3' => 'required',
             'slide4' => 'required',
             'slide5' => 'required',
+            'slide6' => 'required',
             'price' => 'required|numeric',
             'wheels_size' => 'required|numeric',
             'conditions' => 'required',
@@ -76,6 +79,7 @@ class ModelController extends Controller
             'engine' => 'required',
             'consumption' => 'required',
             'description' => 'required',
+            'drivetrain' => 'required|alpha',
         ]);
         $car = new Car();
         $image = new Image();
@@ -88,6 +92,7 @@ class ModelController extends Controller
         $image->slide3 = 'slide3-'.$request->get('model').'.png';
         $image->slide4 = 'slide4-'.$request->get('model').'.png';
         $image->slide5 = 'slide5-'.$request->get('model').'.png';
+        $image->slide6 = 'slide6-'.$request->get('model').'.png';
         /*for ($j=1; $j <= 4; $j++) { 
             $image->slide1 = "slide{$j}-".$request->get('model').'jpg';
             \Log::info('Hello World');
@@ -106,6 +111,7 @@ class ModelController extends Controller
         $car->engine_id = $request->get('engine');
         $car->consumption = $request->get('consumption');
         $car->description = $request->get('description');
+        $car->drivetrain = $request->get('drivetrain');
         $car->image_id = $image->id;
         $car->save();
 
@@ -115,7 +121,7 @@ class ModelController extends Controller
         if($model_img){
             Storage::disk('slider')->put($model_img_filename, File::get($model_img));
         }
-        for($i=1; $i <= 4; $i++){
+        for($i=1; $i <= 6; $i++){
             $slide = $request->file("slide".$i);
             \Log::info($slide);
             $slide_filename = $image["slide{$i}"];

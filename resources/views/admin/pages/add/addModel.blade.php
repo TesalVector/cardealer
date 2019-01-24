@@ -10,6 +10,12 @@
                     <div class="col-md-6">
                         <form action='{{ url('/addModel') }}' method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
+                            @if($message = Session::get('error'))
+                                <div class="alert alert-danger">
+                                    <button type="button" class="close" data-dismiss="alert">x</button>
+                                    <strong>{{ $message }}</strong>
+                                </div>
+                            @endif
                             @if(count($errors) > 0)
                                 <div class="alert alert-danger">
                                     <ul>
@@ -39,6 +45,18 @@
                                 <input type="file" name="slide3" class="form-control">
                                 <input type="file" name="slide4" class="form-control">
                                 <input type="file" name="slide5" class="form-control">
+                                <input type="file" name="slide6" class="form-control">
+                                <form class="md-form">
+                                        <div class="file-field">
+                                          <div class="btn btn-primary btn-sm float-left">
+                                            <span>Choose file</span>
+                                            <input type="file">
+                                          </div>
+                                          <div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text" placeholder="Upload your file">
+                                          </div>
+                                        </div>
+                                      </form>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Price</label>
@@ -68,6 +86,14 @@
                                 <label for="exampleInputEmail1">Tansmission</label>
                                 <input type="text" name="transmission" class="form-control" placeholder="Tansmission">
                             </div>
+                            <div class="form-group">
+                                    <label for="exampleInputPassword1">Drivetrain</label>
+                                    <select name='drivetrain' class="form-control">
+                                        @foreach ($drivetrains as $drivetrain)
+                                            <option value="{{$drivetrain}}">{{$drivetrain}}</option>   
+                                        @endforeach
+                                    </select>
+                                </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">HP</label>
                                 <input type="text" name="hp" class="form-control" placeholder="HP">
@@ -130,26 +156,32 @@
         
         
             $(".item_"+x).change(function() {
-            var checked = $(this).is(':checked');
-            var hiddenVal;
-            hiddenVal = $(".item_"+x).val();
-            if(package === 'basic'){
-                $("#package_"+x).val('basic_'+hiddenVal);
-                //console.log('set basic');
-            }else if(package === 'extra'){
-                $("#package_"+x).val('extra_'+hiddenVal);
-                //console.log('set extra');
-            }
-        
-            console.log($("#package_1").val());
-        
-            $(".item_"+x).prop('checked',false);
-            if(checked) {
-                $(this).prop('checked',true);
-            }
+                var checked = $(this).is(':checked');
+                var hiddenVal;
+                hiddenVal = $(".item_"+x).val();
+                if(package === 'basic'){
+                    $("#package_"+x).val('basic_'+hiddenVal);
+                    //console.log('set basic');
+                }else if(package === 'extra'){
+                    $("#package_"+x).val('extra_'+hiddenVal);
+                    //console.log('set extra');
+                }
+            
+                console.log($("#package_1").val());
+            
+                $(".item_"+x).prop('checked',false);
+                if(checked) {
+                    $(this).prop('checked',true);
+                }
+            });
+
+
         });
-        
-        });
+
+        $('.date-own').datepicker({
+                minViewMod: 2,
+                format: 'yyyy'
+            });
         
     </script>
         

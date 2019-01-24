@@ -11,18 +11,25 @@ use \App\SliderImage;
 class HomeController extends Controller
 {
     public function index(){
-        
-        $brands = Brand::all();
+        $chack = array();
+        $brands = Brand::all(); 
         $images = SliderImage::all();
-        //return $images[0];
-        //return $files;
-        //Storage::disk(env( 'DISK', 'slider'))->url('screen2.jpg');
-        //return HTML::image('app/model-X5.png');
-        //return $images->image;
-        //return Storage::disk('mainSlide')->get( $images->image);
+
+        foreach($brands as $key=>$brand) { 
+          $count = Car::where('brand_id','=',$brand->id)->get();
+          if(!$count->isEmpty()){
+            array_push($chack, array($brand->id => true));
+          }else{
+            array_push($chack, array($brand->id => false));
+          }
+        }
+
+   
+
         return view('customer.pages.home')
         ->with('brands',$brands)
-        ->with('images',$images);
+        ->with('images',$images)
+        ->with('chack',$chack);
     }
 
 }

@@ -29,7 +29,7 @@
                                 <input type="text" class="form-control" name='city' id="exampleInputEmail1" value="{{$country->capital_city}}" aria-describedby="emailHelp" placeholder="Name brand">
                                 <input type="hidden" name='id' value='{{$country->id}}'>
                             </div>
-                            <button type="submit" class="btn btn-primary">Edit</button>
+                            <button type="submit" class="btn btn-info">Edit</button>
                         </form>
                     </div>
                 </div>

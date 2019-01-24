@@ -17,6 +17,8 @@ $(document).ready(function(){
     centerMode: true,
     focusOnSelect: true
     });
+
+    counsole.log('Hello World');
 });
 /*End*/
 
