@@ -28,7 +28,8 @@ class BrandController extends Controller
 
         $validation = $this->validate($request,[
             'brand' => 'required|max:20',
-            'country_id' => 'required'
+            'country_id' => 'required',
+            'description' => 'required|max:200'
         ]);
         
         
@@ -37,6 +38,7 @@ class BrandController extends Controller
         $brand = new Brand();
         $brand->name = $request->get('brand');
         $brand->country_id = $country->id;
+        $brand->description = $request->get('description');
         $brand->save();
 
         return redirect('dashboard');
@@ -45,7 +47,8 @@ class BrandController extends Controller
     public function edit(Request $request){
         $validation = $this->validate($request,[
             'brand' => 'required|max:15',
-            'country' => 'required'
+            'country' => 'required',
+            'description' => 'required|max:200'
         ]);
         
         
@@ -53,7 +56,8 @@ class BrandController extends Controller
         $brand = Brand::find($request->get('id'));
         $brand->name = $request->get('brand');
         $brand->country_id = $request->get('country');
-        $brand->save();
+        $brand->description = $request->get('description');
+        $brand->updata();
 
         return redirect('dashboard');
     }

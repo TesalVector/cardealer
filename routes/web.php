@@ -17,13 +17,9 @@
 
 Route::get('/', 'HomeController@index');
 
-Route::get('/models/{id}', function(){
-    return view('customer/pages/models');
-});
+Route::get('/models/{id}', 'ListModelController@index');
 
-Route::get('/details/{id}', function(){
-    return view('customer/pages/details');
-});
+Route::get('/details/{id}', 'DetailsController@index');
 
 Route::get('/payment/{id}', function(){
     return view('customer/pages/payment');
@@ -155,6 +151,9 @@ Route::get('/deleteSliderImage/{id}', 'SliderImageController@delete');
 /* end */
 
 
+Route::get('/juju', function(){
+    return view('customer.pages.juju');
+});
 
 
 /* OTHER */
@@ -162,5 +161,5 @@ Route::get('/deleteSliderImage/{id}', 'SliderImageController@delete');
 
 /* Error pages */
 
-Route::get('/404', ['as'=>'404', 'uses' => 'ErrorController@notFound']);
+//Route::get('/404', ['as'=>'404', 'uses' => 'ErrorController@notFound']);
 /* end */

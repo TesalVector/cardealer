@@ -38,6 +38,7 @@
                                 <input type="file" name="slide2" class="form-control">
                                 <input type="file" name="slide3" class="form-control">
                                 <input type="file" name="slide4" class="form-control">
+                                <input type="file" name="slide5" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Price</label>

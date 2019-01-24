@@ -1,47 +1,46 @@
 @extends('customer.layouts.base')
 
 @section('body')
-      <header>
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          </ol>
-          <div class="carousel-inner" role="listbox">
-            <!-- Slide One - Set the background image for this slide in the line below -->
-            <div class="carousel-item active" style="background-image: url({{ Storage::disk(env( 'DISK', 'slider'))->url('slide1-Sportage.png') }})">
-              <div class="carousel-caption d-none d-md-block">
-                <h3>First Slide</h3>
-                <p>This is a description for the first slide.</p>
-              </div>
-            </div>
-            <!-- Slide Two - Set the background image for this slide in the line below -->
-            <div class="carousel-item" style="background-image: url({{ Storage::disk(env( 'DISK', 'slider'))->url('slide2-Sportage.png') }})">
-              <div class="carousel-caption d-none d-md-block">
-                <h3>Second Slide</h3>
-                <p>This is a description for the second slide.</p>
-              </div>
-            </div>
-            <!-- Slide Three - Set the background image for this slide in the line below -->
-            <div class="carousel-item" style="background-image: url({{ Storage::disk(env( 'DISK', 'slider'))->url('slide3-Sportage.png') }})">
-              <div class="carousel-caption d-none d-md-block">
-                <h3>Third Slide</h3>
-                <p>This is a description for the third slide.</p>
-              </div>
-            </div>
+<header>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <!-- Slide One - Set the background image for this slide in the line below -->
+        <div class="carousel-item active" style="background-image: url()">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>First Slide</h3>
+            <p>This is a description for the first slide.</p>
           </div>
-          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
         </div>
-      </header>
-
+        <!-- Slide Two - Set the background image for this slide in the line below -->
+        <div class="carousel-item" style="background-image: url({{ Storage::disk(env( 'DISK', 'slider'))->url('slide2-Sportage.png') }})">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Second Slide</h3>
+            <p>This is a description for the second slide.</p>
+          </div>
+        </div>
+        <!-- Slide Three - Set the background image for this slide in the line below -->
+        <div class="carousel-item" style="background-image: url({{ Storage::disk(env( 'DISK', 'slider'))->url('slide3-Sportage.png') }})">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Third Slide</h3>
+            <p>This is a description for the third slide.</p>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </header>
     <section class="py-5">
         <div class="container">
             <h1 class="text-center">Chack our cars</h1>
@@ -51,7 +50,7 @@
                   <div class="col-md-3 col-12 pt-3 pl-4 pr-4 pb-3 bg-light" style="width: 18rem;">
                       <i class="fas fa-car"></i>
                       <h3 class="font-weight-bold">{{$brand->name}}</h3>
-                      <p>We sell perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</p>
+                      <p>{{$brand->description}}</p>
                       <a href='models/{{$brand->id}}' class="btn btn-warning">See all car</a>
                   </div>
                 @endforeach

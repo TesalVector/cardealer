@@ -20,39 +20,19 @@
         <div class="row">
             <div class='col-md-7'>
                 <div class="slider-for">
+                    @foreach($images as $image)
                     <div class="item">
-                        <img src="{{ asset('storage/slide/screen1.jpg') }}" alt="image"  draggable="false"/>
+                        <img src="{{asset('storage/image/mainSlide/').'/'.$image->image}}" alt="image"  draggable="false"/>
                     </div>
-                    <div class="item">
-                        <img src="{{ asset('storage/slide/screen1.jpg') }}" alt="image" draggable="false"/>
-                    </div>
-                    <div class="item">
-                        <img src="{{ asset('storage/slide/screen1.jpg') }}" alt="image" draggable="false"/>
-                    </div>
-                    <div class="item">
-                        <img src="{{ asset('storage/slide/screen1.jpg') }}" alt="image" draggable="false"/>
-                    </div>
-                    <div class="item">
-                        <img src="{{ asset('storage/slide/screen1.jpg') }}" alt="image" draggable="false"/>
-                    </div>
+                    @endforeach
                 </div>
                     
                 <div class="slider-nav">
-                        <div class="item">
-                             <img src="{{ asset('storage/slide/screen1.jpg') }}" alt="image"  draggable="false"/>
-                        </div>
+                    @foreach($images as $image)
                     <div class="item">
-                        <img src="{{ asset('storage/slide/screen1.jpg') }}" alt="image" draggable="false"/>
+                        <img src="{{asset('storage/image/mainSlide/').'/'.$image->image}}" alt="image"  draggable="false"/>
                     </div>
-                    <div class="item">
-                        <img src="{{ asset('storage/slide/screen1.jpg') }}" alt="image" draggable="false"/>
-                    </div>
-                    <div class="item">
-                        <img src="{{ asset('storage/slide/screen1.jpg') }}" alt="image" draggable="false"/>
-                    </div>
-                    <div class="item">
-                        <img src="{{ asset('storage/slide/screen1.jpg') }}" alt="image" draggable="false"/>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="tabs mb-4">
                     <div class="tab-button-outer">

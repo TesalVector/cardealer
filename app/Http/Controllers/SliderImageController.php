@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use \App\Brand;
 use \App\SliderImage;
 
@@ -21,7 +23,7 @@ class SliderImageController extends Controller
     }
 
     public function create(Request $request){
-        $request['time']=date("Y-m-d h:i:s", time());
+        $request['time']=date("Y-m-d_h-i-s", time());
         
         $validation = $this->validate($request,[
             'name' => 'required|alpha',
@@ -36,7 +38,14 @@ class SliderImageController extends Controller
         $sliderimage->description = $request->get('description');
         $sliderimage->brand_id = $request->get('brand_id');
         $sliderimage->image = 'slide-'.$request['time'].'.jpg';
+        //$sliderimage->image = 'slide.jpg';
         $sliderimage->save();
+        $sliderimage->image;
+        $image = $request->file('image');
+        $image_filename = $sliderimage->image;
+        if($image){
+            Storage::disk('mainSlide')->put($image_filename, File::get($image));
+        }
 
         return redirect('dashboard');
     }

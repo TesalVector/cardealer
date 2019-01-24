@@ -64,6 +64,7 @@ class ModelController extends Controller
             'slide2' => 'required',
             'slide3' => 'required',
             'slide4' => 'required',
+            'slide5' => 'required',
             'price' => 'required|numeric',
             'wheels_size' => 'required|numeric',
             'conditions' => 'required',
@@ -79,14 +80,14 @@ class ModelController extends Controller
         $car = new Car();
         $image = new Image();
         
-        //$request->image->getClientOriginalName()
         $j = 1;
-        //\Log::info($request->model_img->getClientOriginalName());
+
         $image->model = 'model-'.$request->get('model').'.png';
         $image->slide1 = 'slide1-'.$request->get('model').'.png';
         $image->slide2 = 'slide2-'.$request->get('model').'.png';
         $image->slide3 = 'slide3-'.$request->get('model').'.png';
         $image->slide4 = 'slide4-'.$request->get('model').'.png';
+        $image->slide5 = 'slide5-'.$request->get('model').'.png';
         /*for ($j=1; $j <= 4; $j++) { 
             $image->slide1 = "slide{$j}-".$request->get('model').'jpg';
             \Log::info('Hello World');
@@ -107,17 +108,19 @@ class ModelController extends Controller
         $car->description = $request->get('description');
         $car->image_id = $image->id;
         $car->save();
+
+        
         $model_img = $request->file('model_img');
         $model_img_filename = $image->model;
         if($model_img){
-            Storage::disk('local')->put($model_img_filename, File::get($model_img));
+            Storage::disk('slider')->put($model_img_filename, File::get($model_img));
         }
         for($i=1; $i <= 4; $i++){
             $slide = $request->file("slide".$i);
             \Log::info($slide);
             $slide_filename = $image["slide{$i}"];
             if($slide){
-                Storage::disk('local')->put($slide_filename, File::get($slide));
+                Storage::disk('slider')->put($slide_filename, File::get($slide));
                 \Log::info('Hello from image!');
             }
         }

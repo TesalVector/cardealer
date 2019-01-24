@@ -37,6 +37,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Country</th>
+                        <th scope="col">Description</th>
                         <th scope="col">Handle</th>
                     </tr>
                 </thead>
@@ -46,6 +47,7 @@
                             <th scope="row">{{$i+1}}</th>
                             <td>{{$brand->name}}</td>
                             <td>{{$brand->name}}</td>
+                            <td>{{$brand->description}}</td>
                             <td><a href='/editBrand/{{$brand->id}}' class="btn btn-primary">Edit</a> <a href='/deleteBrand/{{$brand->id}}' class="btn btn-danger">Delete</a></td>
                         </tr>
                     @endforeach

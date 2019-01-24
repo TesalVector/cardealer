@@ -37,6 +37,10 @@
                                 </select>
                                 <input type="hidden" name='id' value='{{$brand->id}}'>
                             </div>
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea class='form-control' name="description" value='{{$brand->description}}' cols="30" rows="10"></textarea>
+                            </div>
                             <button type="submit" class="btn btn-primary">Edit</button>
                         </form>
                     </div>
