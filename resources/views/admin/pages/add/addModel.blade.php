@@ -29,7 +29,7 @@
                                 </div>
                             @endif
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Select Brand</label>
+                                <label for="">Select Brand</label>
                                 <select name='brand' class="form-control">
                                     @foreach ($brands as $brand)
                                         <option value="{{$brand->id}}">{{$brand->name}}</option>   
@@ -37,53 +37,57 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Name model</label>
+                                <label for="">Name model</label>
                                 <input type="text" name="model" class="form-control" placeholder="Name model">
                             </div>
                             <div class="form-group">
                                 <label>Model image</label>
                                 <div class="custom-file">
                                     <input type="file" name='model_img' class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                    <label class="custom-file-label" for="">Choose file</label>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                    <label for="">Slider size</label>
+                                    <input type="text" name="slider_size" class="form-control" placeholder="Name model">
+                                </div>
                             <div class="form-group">
                                 <label>Images for slide show</label>
                                 <div class="custom-file">
-                                    <input type="file" name='slide1' class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                    <input type="file" name='slide1' class="custom-file-input" id="" aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="">Choose file</label>
                                 </div>
                                 <div class="custom-file">
-                                    <input type="file" name='slide2' class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                    <input type="file" name='slide2' class="custom-file-input" id="" aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="">Choose file</label>
                                 </div>
                                 <div class="custom-file">
-                                    <input type="file" name='slide3' class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                    <input type="file" name='slide3' class="custom-file-input" id="" aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="">Choose file</label>
                                 </div>
                                 <div class="custom-file">
-                                        <input type="file" name='slide4' class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                    </div>
-                                    <div class="custom-file">
-                                    <input type="file" name='slide5' class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        <input type="file" name='slide4' class="custom-file-input" id="" aria-describedby="inputGroupFileAddon01">
+                                        <label class="custom-file-label" for="">Choose file</label>
                                 </div>
                                 <div class="custom-file">
-                                    <input type="file" name='slide6' class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                    <input type="file" name='slide5' class="custom-file-input" id="" aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="">Choose file</label>
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" name='slide6' class="custom-file-input" id="" aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="">Choose file</label>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Price</label>
+                                <label for="">Price</label>
                                 <input type="text" name="price" class="form-control" placeholder="Price">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Wheel size</label>
+                                <label for="">Wheel size</label>
                                 <input type="text" name="wheels_size" class="form-control" placeholder="Wheel size">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Condition</label>
+                                <label for="">Condition</label>
                                 <select name='conditions' class="form-control">
                                     @foreach ($conditions as $condition)
                                         <option value="{{$condition}}">{{$condition}}</option>   
@@ -91,19 +95,19 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Extartior color</label>
+                                <label for="">Extartior color</label>
                                 <input type="text" name="exterior_color" class="form-control" placeholder="Extartior color">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Interior color</label>
+                                <label for="">Interior color</label>
                                 <input type="text" name="interior_color" class="form-control" placeholder="Interior color">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Tansmission</label>
+                                <label for="">Tansmission</label>
                                 <input type="text" name="transmission" class="form-control" placeholder="Tansmission">
                             </div>
                             <div class="form-group">
-                                    <label for="exampleInputPassword1">Drivetrain</label>
+                                    <label for="">Drivetrain</label>
                                     <select name='drivetrain' class="form-control">
                                         @foreach ($drivetrains as $drivetrain)
                                             <option value="{{$drivetrain}}">{{$drivetrain}}</option>   
@@ -111,15 +115,15 @@
                                     </select>
                                 </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">HP</label>
+                                <label for="">HP</label>
                                 <input type="text" name="hp" class="form-control" placeholder="HP">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">CC</label>
+                                <label for="">CC</label>
                                 <input type="text" name="cc" class="form-control" placeholder="CC">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Engine</label>
+                                <label for="">Engine</label>
                                 <select name='engine' class="form-control">
                                     @foreach ($engines as $engine)
                                         <option value="{{$engine->id}}">{{$engine->name}}</option>   
@@ -127,7 +131,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Consumption</label>
+                                <label for="">Consumption</label>
                                 <input type="text" name="consumption" class="form-control" placeholder="Consumption">
                             </div>
                             <div class="row">
@@ -162,50 +166,5 @@
             </div>
         </div>
     </div>
-    <script
-  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
-  crossorigin="anonymous"></script>
-  <script>
-
-
-        $("form input:checkbox").on('click', function(){
-            var str = $(this).attr('class');
-            var x = str.split('_').pop();
-        
-            var package = $(this).attr('data-package');
-        
-        
-        
-            $(".item_"+x).change(function() {
-                var checked = $(this).is(':checked');
-                var hiddenVal;
-                hiddenVal = $(".item_"+x).val();
-                if(package === 'basic'){
-                    $("#package_"+x).val('basic_'+hiddenVal);
-                    //console.log('set basic');
-                }else if(package === 'extra'){
-                    $("#package_"+x).val('extra_'+hiddenVal);
-                    //console.log('set extra');
-                }
-            
-                console.log($("#package_1").val());
-            
-                $(".item_"+x).prop('checked',false);
-                if(checked) {
-                    $(this).prop('checked',true);
-                }
-            });
-
-
-        });
-
-        $('.date-own').datepicker({
-                minViewMod: 2,
-                format: 'yyyy'
-            });
-        
-    </script>
-        
-    <!-- /#page-content-wrapper -->
+<!-- /#page-content-wrapper -->
 @stop

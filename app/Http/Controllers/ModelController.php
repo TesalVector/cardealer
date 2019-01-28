@@ -37,6 +37,7 @@ class ModelController extends Controller
     }
 
     public function create(Request $request){
+
         $boxBasic = array();
         $boxExtra = array();
         $id = array();
@@ -68,6 +69,7 @@ class ModelController extends Controller
             'brand' => 'required',
             'model' => 'required',
             'model_img' => 'required',
+            'slider_size'=> 'required|numeric',
             'slide1' => 'required',
             'slide2' => 'required',
             'slide3' => 'required',
@@ -92,6 +94,7 @@ class ModelController extends Controller
         
         $j = 1;
 
+        // NAKON TESTIRANJA OVAJ DEO URADITI DINAMICKI - zakomentarisana FOR petlja je rezervisana za taj deo 
         $image->model = 'model-'.$request->get('model').'.png';
         $image->slide1 = 'slide1-'.$request->get('model').'.png';
         $image->slide2 = 'slide2-'.$request->get('model').'.png';
@@ -99,11 +102,15 @@ class ModelController extends Controller
         $image->slide4 = 'slide4-'.$request->get('model').'.png';
         $image->slide5 = 'slide5-'.$request->get('model').'.png';
         $image->slide6 = 'slide6-'.$request->get('model').'.png';
+
+
         /*for ($j=1; $j <= 4; $j++) { 
             $image->slide1 = "slide{$j}-".$request->get('model').'jpg';
             \Log::info('Hello World');
         }*/
+        $image->count = $request->get('slider_size');
         $image->save();
+        
         $car->brand_id = $request->get('brand');
         $car->model = $request->get('model');
         $car->price = $request->get('price');
@@ -127,7 +134,7 @@ class ModelController extends Controller
         if($model_img){
             Storage::disk('slider')->put($model_img_filename, File::get($model_img));
         }
-        for($i=1; $i <= 6; $i++){
+        for($i=1; $i <= $request->get('slider_size'); $i++){
             $slide = $request->file("slide".$i);
             \Log::info($slide);
             $slide_filename = $image["slide{$i}"];
@@ -157,10 +164,16 @@ class ModelController extends Controller
         CarPackage::where('car_id','=',$id)->delete();
         CarExtraPackage::where('car_id','=',$id)->delete();
         
+        $sliderCount =  Image::where('id','=',$car->image_id)->get()[0]->count;
+
         $car->delete();
+       
+        
         Image::where('id','=',$car->image_id)->delete();
         Storage::disk('slider')->delete('model-520d.png');
-        for($i=1; $i <= 6; $i++){
+
+        // UMESTO 6 PROMENITI TO U DINAMICKI DEO
+        for($i=1; $i <= $sliderCount; $i++){
             Storage::disk('slider')->delete("slide{$i}-520d.png");
         }
         return redirect('dashboard');

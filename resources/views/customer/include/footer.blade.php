@@ -57,7 +57,7 @@
 <script type="text/javascript" src="{{asset('js/popper.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
 <script>
-    
+    // NAKON TESTIRANJA OVAJ DEO PREMESTITI U APP.JS FAJL!!!!
     $(document).on('input change', '#slider_front', function() {
         $('#slider_value_front').html( $(this).val() );
         $(this).val($(this).val());
@@ -79,18 +79,19 @@
         $id = $('.target').val();
         $.getJSON('http://localhost/data/'+$id,function(data){
 
-            //reset all value
+            //OVAJ DEO NAPISATI U JQUERY NAKON TESTIRANJA!!!!
             document.getElementById('slider_value_front').innerHTML = 0;
             document.getElementById('slider_value_back').innerHTML = 0;
             document.getElementById('slider_value_right').innerHTML = 0;
             document.getElementById('slider_value_left').innerHTML = 0;
-
+            
+             //OVAJ DEO NAPISATI U JQUERY NAKON TESTIRANJA!!!!
             document.getElementById('slider_front').value = 0;
             document.getElementById('slider_back').value = 0;
             document.getElementById('slider_right').value = 0;
             document.getElementById('slider_left').value = 0;
 
-            // get data from JSON and set max value
+             //OVAJ DEO NAPISATI U JQUERY NAKON TESTIRANJA!!!!
             document.getElementById('slider_front').max = data[0]['front'];
             document.getElementById('slider_back').max = data[0]['back'];
             document.getElementById('slider_right').max = data[0]['right'];

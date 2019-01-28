@@ -29,14 +29,14 @@
                       <ul id="tab-button">
                         <li><a href="#tab01">GENERAL INFORMATION</a></li>
                         <li><a href="#tab02">FEATURES & OPTIONS</a></li>
-                        <li><a href="#tab03">BESIC PACKAGE</a></li>
+                        <li><a href="#tab03">BASIC PACKAGE</a></li>
                       </ul>
                     </div>
                     <div class="tab-select-outer">
                       <select id="tab-select">
                         <option value="#tab01">GENERAL INFORMATION</option>
                         <option value="#tab02">FEATURES & OPTIONS</option>
-                        <option value="#tab03">BESIC PACKAGE</option>
+                        <option value="#tab03">BASIC PACKAGE</option>
                       </select>
                     </div>
                   
@@ -49,7 +49,7 @@
                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quos aliquam consequuntur, esse provident impedit minima porro! Laudantium laboriosam culpa quis fugiat ea, architecto velit ab, deserunt rem quibusdam voluptatum.</p>
                     </div>
                     <div id="tab03" class="tab-contents">
-                      <h2>BESIC PACKAGE</h2>
+                      <h2>BASIC PACKAGE</h2>
                       <div class="row">
                         <div class="col-md-12 description-list-p">
                             <ul class="list-group">
