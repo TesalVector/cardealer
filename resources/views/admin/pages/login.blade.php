@@ -1,12 +1,12 @@
 @extends('admin.layouts.base')
 @section('body')
+    @if(isset(Auth::user()->email))
+        <script>window.location = 'dashboard'</script>
+    @endif
     <div class="row justify-content-center">
         <div class="col-lg-6 col-md-12 admin-login">
             <img src="{{ asset('storage/static/logo.png') }}" alt="" width="300">
             <h1 class="text-center">LOGIN TO ADMIN PANEL</h1>
-            @if(isset(Auth::user()->email))
-                <script>window.location = 'dashboard'</script>
-            @endif
             <form action='{{ url('/admin/chacklogin') }}' method="POST">
                 @if($message = Session::get('error'))
                     <div class="alert alert-danger">

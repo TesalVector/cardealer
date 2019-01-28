@@ -60,7 +60,7 @@ class SliderImageController extends Controller
         $country = Country::find($request->get('id'));
         $country->name = $request->get('country');
         $country->capital_city = $request->get('city');
-        $country->save();
+        $country->update();
 
         return redirect('dashboard');
     }

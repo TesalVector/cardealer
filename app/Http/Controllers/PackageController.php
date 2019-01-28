@@ -44,7 +44,7 @@ class PackageController extends Controller
         $package = Package::find($request->get('id'));
         $package->name = $request->get('item');
         $package->price = $request->get('price');
-        $package->save();
+        $package->update();
 
         return redirect('dashboard');
     }

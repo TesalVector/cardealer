@@ -63,7 +63,7 @@ class LawsGlassController extends Controller
         $lawsGlass->right = $request->get('right');
         $lawsGlass->left = $request->get('left');
         $lawsGlass->country_id = $country->id;
-        $lawsGlass->save();
+        $lawsGlass->update();
 
         return redirect('dashboard');
     }

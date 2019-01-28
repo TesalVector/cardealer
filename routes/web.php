@@ -21,9 +21,10 @@ Route::get('/models/{id}', 'ListModelController@index');
 
 Route::get('/details/{id}', 'DetailsController@index');
 
-Route::get('/payment/{id}', function(){
-    return view('customer/pages/payment');
-});
+Route::get('/payment/{id}', 'PaymentController@index');
+
+Route::post('/payment', 'PaymentController@payment');
+
 
 Route::get('/preload', function(){
     return view('global/preload');
@@ -31,6 +32,7 @@ Route::get('/preload', function(){
 /* end */
 
 
+Route::get('data/{id}','Controller@data');
 
 
 /* ADMIN */
@@ -43,6 +45,10 @@ Route::get('/admin', 'AdminController@index');
 Route::get('/dashboard', 'AdminController@dashboard');
 
 Route::post('/admin/chacklogin', 'AdminController@login');
+
+Route::get('/order', 'AdminController@order');
+
+Route::get('/accept/{id}', 'AdminController@accept');
 
 Route::get('/admin/logout', 'AdminController@logout');
 /* end */

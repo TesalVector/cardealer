@@ -10,7 +10,7 @@
             </div>
             <div class="col-md-3 text-lg-right">
                 <strong>$ {{$car->price}}</strong>
-                <p class="text-muted">Plus Taxes & Licensing</p>
+                <p class="text-muted mt-2">Plus Taxes & Licensing</p>
             </div>
         </div>
     </section>

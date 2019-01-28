@@ -101,7 +101,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <a href='{{ url('/addLaws') }}' class="btn btn-success">Add</a>
+            <a href='{{ url('/addLawsGlass') }}' class="btn btn-success">Add</a>
             <h2 class="text-center dashboard-subtitle">All engines</h2>
             <table class="table">
                 <thead class="thead-dark">

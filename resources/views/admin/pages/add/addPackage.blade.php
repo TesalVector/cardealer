@@ -1,6 +1,9 @@
 @extends('admin.layouts.base')    
 @section('body')   
     <!-- Page Content -->
+    @if( !isset(Auth::user()->email) )
+        <script>window.location = '/admin'</script>
+     @endif
     <div id="page-content-wrapper">
         <div class="container-fluid admin-dashboard">
             <h1 class="font-weight-bold">Add new Item</h1>

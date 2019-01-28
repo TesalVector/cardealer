@@ -13,6 +13,7 @@ use \App\Package;
 use \App\Tire;
 use \App\Car;
 use \App\SliderImage;
+use \App\Order;
 
 class AdminController extends Controller
 {
@@ -62,5 +63,17 @@ class AdminController extends Controller
             ->with('tires', $tires)
             ->with('cars', $cars)
             ->with('sliderImages', $sliderImages);
+    }
+
+    public function order(){
+        $orders = Order::all();
+
+        return view('admin.pages.orders')
+        ->with('orders',$orders);
+    }
+
+    public function accept($id){
+
+        return view('admin.pages.accept');
     }
 }

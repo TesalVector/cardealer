@@ -8,6 +8,9 @@
             <a href="{{ url('dashboard') }}">Dashboard</a>
         </li>
         <li>
+            <a href='{{ url('order') }}'>Orders</a>
+        </li>
+        <li>
             <a href='{{ url('admin/logout') }}'>Logout</a>
         </li>
     </ul>

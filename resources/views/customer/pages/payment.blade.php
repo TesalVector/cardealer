@@ -4,19 +4,19 @@
     <!-- Header payment -->
     <section class="container">
         <h1 class="text-center mt-5 mb-5 font-weight-bold descriptiom-title-shop">SHOP</h2>
-          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+          <p>{{$car->description}}</p>
     </section>
     
     
     <section class="container mt-4">
         <div class="row header-payment">
             <div class="col-md-6">
-                <img src="img/a4.png" class="img-fluid" alt="Responsive image">
+              <img src="{{asset('storage/image/slide/').'/'.$image}}" class="img-fluid" alt="Responsive image">
             </div>
             <div class="col-md-6 text-center">
-                <h3>BMW X5</h3>
+              <h3>{{$brand[0]->name}} {{$car->model}}</h3>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Total price: $ 65.700</li>
+                  <li class="list-group-item">Total price: $ {{$car->price}}</li>
                   <li class="list-group-item">VAT is not includet in price</li>
                   <li class="list-group-item">Free shipping</li>
                 </ul>
@@ -28,7 +28,17 @@
     <section class="container mt-4 mb-4">
         <div class="row">
             <div class="col-md-12">
-                <form action="">
+                <form action="{{ url('/payment') }}" method="POST">
+                {{ csrf_field() }}
+                @if(count($errors) > 0)
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                 <div class="accordion car-payment" id="accordionExample">
                     <div class="card card-into-payment">
                       <div class="card-header" id="headingOne">
@@ -38,20 +48,21 @@
                           </button>
                         </h5>
                       </div>
-                      
                       <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                         <div class="card-body personal-info">  
                           <div class="row">
                               <div class="col-md-12">
                                 <h3 class="text-center mt-3 mb-5">Personal information</h3>
+                                <div class="separator col-md-12"></div>
                                 <input type="text" name="fname" placeholder="First name" class="">
                                 <input type="text" name="lname" placeholder="Last name" class="">
                                 <input type="email" name="email" placeholder="Email" class="">
                                 <input type="text" name="phone" placeholder="Phone number" class="">
-                                <select name="" id="">
-                                    <option value="">Serbia</option>
-                                    <option value="">UK</option>
-                                    <option value="">Germany</option>
+                                <select name='country_id' class="form-control target">
+                                      <option value="#" selected>Country</option>
+                                  @foreach ($countries as $country)
+                                      <option value="{{$country->id}}">{{$country->name}}</option>   
+                                  @endforeach
                                 </select>
                                 <input type="text" name="city" placeholder="City" class="">
                                 <input type="text" name="zip" placeholder="Zip" class="">
@@ -71,6 +82,7 @@
                       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                         <div class="card-body">
                           <h3 class="text-center">Extra packages</h3>
+                                <div class="separator col-md-12"></div>
                                 <div class="row mt-5">
                                     <div class="col-md-12">
                                         <table class="table extra-table">
@@ -83,51 +95,73 @@
                                               </tr>
                                             </thead>
                                             <tbody>
+                                            @foreach($extraPackage as $key=>$item)
+                                              @if($item->name != 'TNG')
                                               <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>$200</td>
-                                                <td>
+                                                <th scope="row">{{$key+1}}</th>
+                                                  <td>{{$item->name}}</td>
+                                                  <td>${{$item->price}}</td>
+                                                  <td>
                                                     <div class="form-check">
-                                                        <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                      <input class="form-check-input position-static" name='item_{{$key+1}}' type="checkbox" id="blankCheckbox" value="{{$item->id}}">
                                                     </div>
+                                                  </td>
+                                                </tr>
+                                                @endif
+                                              @endforeach
+                                              @if($engine[0]->name != 'Electric' && $engine[0]->name != 'TNG')
+                                              <tr>
+                                                <th scope="row">@</th>
+                                                <td>{{$tng[0]->name}}</td>
+                                                <td>${{$tng[0]->price}}</td>
+                                                <td>
+                                                  <div class="form-check">
+                                                    <input class="form-check-input position-static" name='tng' type="checkbox" id="blankCheckbox" value="{{$item->id}}">
+                                                  </div>
                                                 </td>
                                               </tr>
+                                              @endif
                                               <tr>
-                                                <th scope="row">2</th>
-                                                <td>Jacob</td>
-                                                <td>$450</td>
+                                                <th scope="row">@</th>
+                                                <td>Tires</td>
+                                                <td>Select</td>
                                                 <td>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-                                                    </div>
-                                                </td>
-                                              </tr>
-                                              <tr>
-                                                <th scope="row">3</th>
-                                                <td>Larry</td>
-                                                <td>$560</td>
-                                                <td>
-                                                    <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                                                        <option selected>Choose...</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
+                                                    <select name='tires' class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                                                        @if($tires->isEmpty())
+                                                          <option value="">Current does have tire</option>
+                                                        @else
+                                                          @foreach($tires as $tire)
+                                                            <option value="{{$tire->id}}">{{$tire->name}} | ${{$tire->price}}</option>
+                                                          @endforeach
+                                                        @endif 
                                                     </select>
                                                 </td>
-                                              </tr>
-                                              <tr>
-                                                <th scope="row">4</th>
-                                                <td>Mark</td>
-                                                <td>$200</td>
-                                                    <td>
-                                                        <div class="form-check">
-                                                            <input type="range" name="points" min="0" max="10">
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                          </table>           
+                                            </tr>
+                                          </tbody>
+                                      </table>         
+                                    </div>
+                                    <div class="glass-container col-md-12">
+                                      <div class="glass-range front-glass">
+                                        <label for="">Front glass</label>
+                                        <input type="range" name='front-glass' value='0' id="slider_front" min="0" max="0" step="10">
+                                        <span id="slider_value_front">0</span>
+                                      </div>
+                                      <div class="glass-range back-glass">
+                                          <label for="">Back glass</label>
+                                          <input type="range" name='back-glass' value='0' id="slider_back" min="0" max="0" step="10">
+                                          <span id="slider_value_back">0</span>
+                                      </div>
+                                      <div class="glass-range right-glass">
+                                          <label for="">Right glass</label>
+                                          <input type="range" name='right-glass' value='0' id="slider_right" min="0" max="0" step="10">
+                                          <span id="slider_value_right">0</span>
+                                      </div>
+                                      <div class="glass-range left-glass">
+                                          <label for="">Left glass</label>
+                                          <input type="range" name='left-glass' value='0' id="slider_left" min="0" max="0" step="10">
+                                          <span id="slider_value_left">0</span>
+                                      </div>
+                                      <img src="{{asset('storage/static/glasss.jpg')}}" alt="" width="400">
                                     </div>
                               </div>
                         </div>
@@ -144,6 +178,7 @@
                       <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                         <div class="card-body payment-details">
                             <h3 class="text-center mt-3 mb-5">Paymant details</h3>
+                            <div class="separator col-md-12"></div>
                             <div class="container">
                                     <div class='row'>
                                         <div class='col-md-4'></div>
@@ -156,7 +191,7 @@
                                               </div>
                                             </div>
                                             <div class='form-row'>
-                                              <div class='col-md-12 form-group card fix-from-payment required' id=''>
+                                              <div class='col-md-12 form-group fix-from-payment required' id=''>
                                                 <label class='control-label'>Card Number</label>
                                                 <input autocomplete='off' name='cardnumber' placeholder="Card number" class='form-control card-number' size='20' type='text'>
                                               </div>
@@ -185,14 +220,7 @@
                                             </div>
                                             <div class='form-row'>
                                               <div class='col-md-12 form-group'>
-                                                <button class='form-control fix-from-payment btn btn-primary submit-button' type='submit'>Pay »</button>
-                                              </div>
-                                            </div>
-                                            <div class='form-row'>
-                                              <div class='col-md-12 error form-group hide'>
-                                                <div class='alert-danger alert'>
-                                                  Please correct the errors and try again.
-                                                </div>
+                                                <button class='btn btn-primary' type='submit'>Pay »</button>
                                               </div>
                                             </div>
                                             <div class='form-row'>

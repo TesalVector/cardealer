@@ -28,10 +28,14 @@ class ModelController extends Controller
         ->with('engines',$engines)
         ->with('drivetrains',$drivetrains['drivetrain']);
     }
+
     public function viewEdit($id){
+        $brand = Brad::all();
         $country = Country::find($id);
-        return view('admin.pages.edit.editModel')->with('country',$country);
+        return view('admin.pages.edit.editModel')
+        ->with('country',$country);
     }
+
     public function create(Request $request){
         $boxBasic = array();
         $boxExtra = array();
@@ -132,6 +136,7 @@ class ModelController extends Controller
                 \Log::info('Hello from image!');
             }
         }
+        
         $car->basicPackage()->sync($boxBasic);
         $car->extraPackage()->sync($boxExtra);
         
