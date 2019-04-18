@@ -14,6 +14,7 @@
 /* CUSTOMER */
 //////////////
 
+
 Route::get('/', 'HomeController@index');
 
 Route::get('/models/{id}', 'ListModelController@index');
